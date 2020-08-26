@@ -5,8 +5,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 // Components
 import Home from './Pages/Home';
 import Dashboard from './Pages/Dashboard';
-import Blog from './Pages/Blog';
-import BlogPost from './Pages/BlogPost';
+import SelfAuthorizations from './Pages/SelfAuthorizations';
 import Nav from './Components/Nav';
 
 function App() {
@@ -16,8 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route exact path="/blog" component={Blog} />
-        <Route path="/blog/:blogId" component={BlogPost} />
+        <Route path="/loading-management/affiliate/:companyCustomerIdName/location" component={SelfAuthorizations} />
       </Switch>
     </Router>
   );
