@@ -1,65 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { Switch, Route, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
+import danosaurs from '../danosaurs.json';
 
 import CardsPanel from './CardsPanel';
-
-// List of "Selectors"
-const danosaurs = [
-  {
-    id: 0,
-    name: 'Fish'
-  },
-  {
-    id: 1,
-    name: 'Dog'
-  },
-  {
-    id: 2,
-    name: 'Cat'
-  },
-  {
-    id: 3,
-    name: 'Pony'
-  },
-  {
-    id: 4,
-    name: 'Bird'
-  },
-  {
-    id: 5,
-    name: 'Snake'
-  }
-];
 
 const SelfAuthorizations = () => {
   const { push } = useHistory();
   const { pathname } = useLocation();
   const { path } = useRouteMatch();
+  const { viewBy } = useParams();
 
   const [ index, setIndex ] = useState(null);
 
   useEffect(() => {
-    let locationId = pathname.split('/')[5];
+    let viewById = pathname.split('/')[5];
     // If the url contains an id then we push and select that selector
     // else select the first item in the list
-    if(locationId) {
-      setIndex(parseInt(locationId));
+    if(viewById) {
+      setIndex(viewById.split('-').join(' '));
     }
     else {
       setIndex(0);
-      push(`${pathname}/0`);
+      let urlName = danosaurs[0].nameLong.split(' ').join('-');
+      push(`${pathname}/${urlName}`);
     }
     // This signifies the "selected" selector on the left side list
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getDanosaur = () => danosaurs.filter(({id}) => id === index);
+  const getDanosaur = () => danosaurs.filter(({nameLong}) => nameLong === index);
 
   return (
     <div className="">
-      {getDanosaur()[0]?.name}
+      {`${viewBy.toUpperCase()} Authorization ${getDanosaur()[0]?.nameShort}`}
       <Switch>
-        <Route path={`${path}/:locationId`} component={CardsPanel} />
+        <Route path={`${path}/:viewById`} component={CardsPanel} />
       </Switch>
     </div>
   )

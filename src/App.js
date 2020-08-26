@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/loading-management/affiliate/:companyCustomerIdName/location" component={SelfAuthorizations} />
+        <Route path="/loading-management/affiliate/:companyCustomerIdName/:viewBy" component={SelfAuthorizations} />
       </Switch>
     </Router>
   );

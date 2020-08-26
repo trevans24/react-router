@@ -1,21 +1,25 @@
 import React, { useMemo } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
+import danosaurs from '../danosaurs.json';
 
 // Components
 const CardsPanel = (props) => {
-  const { locationId } = useParams();
+  const { viewById } = useParams();
 
   useMemo(() => {
-    if(locationId) {
+    if(viewById) {
+      // Find viewBy id
+      let foundDanosaur = danosaurs.find(({nameLong}) => nameLong === viewById.split('-').join(' '));
+      // fetch from that ID
       setTimeout(() => {
-        console.log('fetched unique locations', locationId)
+        console.log('fetched unique locations', foundDanosaur.id)
       }, 3000)
     }
-  }, [locationId])
+  }, [viewById])
 
   return (
     <div className="">
-      CardsPanel #{locationId} works
+      {viewById} cards show here
     </div>
   )
 };

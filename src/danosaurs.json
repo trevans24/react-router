@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "nameShort": "Fish",
+    "nameLong": "0 Fish"
+  },
+  {
+    "id": 1,
+    "nameShort": "Dog",
+    "nameLong": "1 Dog"
+  },
+  {
+    "id": 2,
+    "nameShort": "Cat",
+    "nameLong": "2 Cat"
+  },
+  {
+    "id": 3,
+    "nameShort": "Pony",
+    "nameLong": "3 Pony"
+  },
+  {
+    "id": 4,
+    "nameShort": "Bird",
+    "nameLong": "4 Bird"
+  },
+  {
+    "id": 5,
+    "nameShort": "Snake",
+    "nameLong": "5 Snake"
+  }
+]
