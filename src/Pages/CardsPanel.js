@@ -5,11 +5,12 @@ import danosaurs from '../danosaurs.json';
 // Components
 const CardsPanel = (props) => {
   const { viewById } = useParams();
+  const urlName = viewById.split('-').join(' ');
 
   useMemo(() => {
-    if(viewById) {
+    if(urlName) {
       // Find viewBy id
-      let foundDanosaur = danosaurs.find(({nameLong}) => nameLong === viewById.split('-').join(' '));
+      let foundDanosaur = danosaurs.find(({nameLong}) => nameLong === urlName);
       // fetch from that ID
       setTimeout(() => {
         console.log('fetched unique locations', foundDanosaur.id)
@@ -19,7 +20,7 @@ const CardsPanel = (props) => {
 
   return (
     <div className="">
-      {viewById} cards show here
+      {urlName} cards show here
     </div>
   )
 };
